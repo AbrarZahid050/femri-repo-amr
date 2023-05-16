@@ -1,0 +1,124 @@
+.main_side_drawer_wrapper {
+  height: 100%;
+  background: #282842;
+  box-shadow: inset -1px 0px 0px #e2e2ea;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.main_side_drawer_wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.main_side_drawer_wrapper > h2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6f758b;
+  padding-top: 10px;
+}
+
+.side_drawer_wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.link_wrapper_active {
+  display: flex !important;
+  align-items: center !important;
+  padding: 24px 20px !important;
+  gap: 20px !important;
+  cursor: pointer !important;
+  background: #000029 !important;
+  border-left: 1px solid #ffffff !important;
+  margin-right: 1px !important;
+}
+
+.link_wrapper_active > p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+}
+
+.link_wrapper {
+  display: flex !important;
+  align-items: center !important;
+  padding: 24px 20px !important;
+  gap: 20px !important;
+  cursor: pointer !important;
+  background: #282842 !important;
+  margin-right: 1px !important;
+}
+
+.link_wrapper:hover {
+  background: #000029 !important;
+  border-left: 1px solid #ffffff !important;
+  margin-right: 1px !important;
+}
+
+.link_wrapper_image {
+  width: 18.5px;
+  height: 18.5px;
+}
+
+.link_wrapper > p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+}
+.loads_dropdown_wrapper {
+  padding: 0px 20px 20px 58px;
+  margin-top: -15px;
+}
+.loads_link_wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 30px 10px 0px 0px;
+  justify-content: space-between;
+}
+.loads_link_wrapper > p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+}
+.loads_link_wrapper > span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  color: #6f758b;
+}
+.loads_arrow_icon {
+  width: 12px !important;
+  height: 14px !important;
+  position: relative;
+  right: -86px;
+}
+
+.loads_arrow_icon_reverse {
+  transform: scaleY(-1);
+  width: 12px !important;
+  height: 14px !important;
+  position: relative;
+  right: -86px;
+}
