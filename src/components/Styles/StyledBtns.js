@@ -8,7 +8,7 @@ import {
   styled,
   useRadioGroup,
 } from "@mui/material";
-import { grey, indigo } from "@mui/material/colors";
+import { blue, grey, indigo } from "@mui/material/colors";
 
 export const LoginBtn = styled(Button)(() => {
   return {
@@ -23,6 +23,25 @@ export const LoginBtn = styled(Button)(() => {
     "&:hover": {
       background: indigo[500],
       border: `1px solid ${indigo[700]}`,
+    },
+
+    "&.Mui-disabled": {
+      background: grey[500],
+      border: `1px solid ${grey[700]}`,
+    },
+  };
+});
+
+export const SubmitBtn = styled(Button)(() => {
+  return {
+    fontSize: "16px",
+    borderRadius: 8,
+    background: blue[800],
+    color: "white",
+    border: `1px solid #0062FF`,
+    "&:hover": {
+      background: blue[500],
+      border: `1px solid ${blue[700]}`,
     },
 
     "&.Mui-disabled": {
