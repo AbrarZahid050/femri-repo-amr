@@ -74,7 +74,7 @@ function CarrierSearchForm() {
             >
               <p>{item.name}</p>
               <SubmitBtn
-                onClick={() => navigate(`panel/carrier/review/${number}`)}
+                onClick={() => navigate(`/panel/carrier/review/${number}`)}
                 sx={{
                   background: indigo[500],
                   "&:hover": {
