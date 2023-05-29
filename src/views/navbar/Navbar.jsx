@@ -12,7 +12,7 @@ import {
   StyledLabel,
 } from "../../components/Styles/StyledBtns.js";
 import { setLogout } from "../../redux/slices/authSlice";
-import CustomInput from "../carrier/components/InputFields/CustomInput";
+import CustomInput from "../load/components/InputFields/CustomInput";
 // import useAuth from "../../hooks/useAuth";
 // import Cookies from "js-cookie";
 

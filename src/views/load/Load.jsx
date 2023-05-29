@@ -76,7 +76,7 @@ const data = [
   },
 ];
 
-const Carrier = () => {
+const Load = () => {
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => {
@@ -192,7 +192,7 @@ const Carrier = () => {
   );
 };
 
-export default Carrier;
+export default Load;
 
 //  below is the code which should be ignored as it was the an old iteration, would be deleted in final production
 

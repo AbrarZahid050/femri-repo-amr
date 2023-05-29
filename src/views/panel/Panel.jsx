@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Carrier from "../carrier/Carrier";
+import Load from "../load/Load";
 import Customer from "../customer/Customer";
 import Dashboard from "../dashboard/Dashboard";
 import Navbar from "../navbar/Navbar";
@@ -12,6 +12,7 @@ import SendFeedback from "../sendFeedback/SendFeedback";
 import Terms from "../termsAndConditions/Terms";
 import PrivatePolicy from "../termsAndConditions/PrivatePolicy";
 import Subs from "../subs/Subs";
+import ReviewCarrier from "../carrier/review";
 
 const Panel = () => {
   return (
@@ -26,7 +27,8 @@ const Panel = () => {
           <Route path="/sendfeedback" element={<SendFeedback />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/policy" element={<PrivatePolicy />} />
-          <Route path="/carrier" element={<Carrier />} />
+          <Route path="/load" element={<Load />} />
+          <Route path="/carrier/review/:id" element={<ReviewCarrier />} />
           <Route path="/subs" element={<Subs />} />
           <Route path="/user" element={<User />} />
           <Route path="/customer" element={<Customer />} />

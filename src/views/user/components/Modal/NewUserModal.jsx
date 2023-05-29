@@ -16,7 +16,7 @@ import {
   CancelBtn,
 } from "../../../../components/Styles/StyledBtns";
 import { ReactComponent as SelectArrows } from "../../../../assets/Users/selectArrows.svg";
-import CustomInput from "../../../carrier/components/InputFields/CustomInput";
+import CustomInput from "../../../load/components/InputFields/CustomInput";
 import { createNewUser } from "../../../../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 

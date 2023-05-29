@@ -2,20 +2,23 @@ import { Box, Divider, MenuItem, Select } from "@mui/material";
 import React, { useState } from "react";
 import { StyledInput, SubmitBtn } from "../Styles/StyledBtns";
 import { indigo } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 function CarrierSearchForm() {
   const [code, setCode] = useState("MC");
   const [number, setNumber] = useState();
   const [result, setResult] = useState([]);
+  const navigate = useNavigate();
   const carriers = [
-    { code: "MC", Number: 123456, name: "carrier 1" },
-    { code: "DOT", Number: 654321, name: "carrier 2" },
-    { code: "FF", Number: 98741, name: "carrier 3" },
+    { code: "MC", Number: 12345, name: "carrier 1" },
+    { code: "DOT", Number: 65432, name: "carrier 2" },
+    { code: "FF", Number: 9874, name: "carrier 3" },
   ];
   const handleSearch = () => {
-    setResult([
-      carriers.find((item) => item.Number == number && item.code === code),
-    ]);
+    let carrier = carriers.find(
+      (item) => item.Number == number && item.code === code
+    );
+    carrier ? setResult([carrier]) : setResult([]);
   };
   return (
     <Box>
@@ -69,9 +72,9 @@ function CarrierSearchForm() {
                 padding: "20px",
               }}
             >
-              <p>carrier</p>
+              <p>{item.name}</p>
               <SubmitBtn
-                onClick={() => console.log("hello")}
+                onClick={() => navigate(`panel/carrier/review/${number}`)}
                 sx={{
                   background: indigo[500],
                   "&:hover": {
