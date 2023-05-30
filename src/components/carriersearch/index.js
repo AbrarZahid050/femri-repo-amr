@@ -16,7 +16,7 @@ function CarrierSearchForm() {
   ];
   const handleSearch = () => {
     let carrier = carriers.find(
-      (item) => item.Number == number && item.code === code
+      (item) => item.Number === number && item.code === code
     );
     carrier ? setResult([carrier]) : setResult([]);
   };

@@ -26,71 +26,172 @@ import Header from "./components/HeaderSection/Header";
 
 const data = [
   {
-    carrier1: {
-      carrier: {
-        search: "random1",
-        name: "random2",
-        insurance: "random3",
-        phone: "random4",
-        fax: "random5",
-        pro: "random6",
-        rc: "random7",
-      },
-      dispatch: {
-        name: "random1",
-        phone: "random2",
-        email: "random3",
-        afterHoursName: "random4",
-        afterHoursPhone: "random5",
-        comment: "random6",
-      },
-      accounting: {
-        apFee: 0.0,
-      },
+    freight: {
+      search: "random1",
+      name: "random2",
+      insurance: "random3",
+      phone: "random4",
+      fax: "random5",
+      pro: "random6",
+      rc: "random7",
     },
+    dispatch: {
+      name: "random1",
+      phone: "random2",
+      email: "random3",
+      afterHoursName: "random4",
+      afterHoursPhone: "random5",
+      comment: "random6",
+    },
+    accounting: {
+      apFee: "$00.00",
+    },
+    drivers: [
+      {
+        name: "ahmed",
+        mobilePhone: "01565546",
+        alternatePhone: "021021",
+        location: "cairo",
+        palets: "dfdaf",
+        tractor: "sfdf",
+        trailer: "dfdas",
+        equipment: "adfa",
+        equipmentSize: "afdf",
+      },
+      {
+        name: "marc",
+        mobilePhone: "757547",
+        alternatePhone: "04124",
+        location: "london",
+        palets: "Palets ",
+        tractor: "tractor",
+        trailer: "trailer",
+        equipment: "equipment",
+        equipmentSize: "equipmentSize",
+      },
+    ],
+    notes: "",
+    docs: [""],
   },
-
   {
-    carrier2: {
-      carrier: {
-        search: "random1",
-        name: "random2",
-        insurance: "random3",
-        phone: "random4",
-        fax: "random5",
-        pro: "random6",
-        rc: "random7",
-      },
-      dispatch: {
-        name: "random1",
-        phone: "random2",
-        email: "random3",
-        afterHoursName: "random4",
-        afterHoursPhone: "random5",
-        comment: "random6",
-      },
-      accounting: {
-        apFee: 0.0,
-      },
+    freight: {
+      search: "random1",
+      name: "random2",
+      insurance: "random3",
+      phone: "random4",
+      fax: "random5",
+      pro: "random6",
+      rc: "random7",
     },
+    dispatch: {
+      name: "random1",
+      phone: "random2",
+      email: "random3",
+      afterHoursName: "random4",
+      afterHoursPhone: "random5",
+      comment: "random6",
+    },
+    accounting: {
+      apFee: "$00.00",
+    },
+    drivers: [
+      {
+        name: "ahmed",
+        mobilePhone: "01565546",
+        alternatePhone: "021021",
+        location: "cairo",
+        palets: "dfdaf",
+        tractor: "sfdf",
+        trailer: "dfdas",
+        equipment: "adfa",
+        equipmentSize: "afdf",
+      },
+      {
+        name: "marc",
+        mobilePhone: "757547",
+        alternatePhone: "04124",
+        location: "london",
+        palets: "Palets ",
+        tractor: "tractor",
+        trailer: "trailer",
+        equipment: "equipment",
+        equipmentSize: "equipmentSize",
+      },
+    ],
+    notes: "",
+    docs: [""],
   },
 ];
 
 const Load = () => {
+  const [carriers, setCarriers] = useState(data);
   const [expanded, setExpanded] = useState(false);
-
-  const handleChange = (panel) => {
-    return (event) => {
-      setExpanded((preVal) => {
-        if (panel === preVal) {
-          return false;
-        } else {
-          return panel;
-        }
-      });
-    };
+  const handleAccordionChange = (index) => (event, isExpanded) => {
+    setExpanded(isExpanded ? index : null);
+  };
+  const handleAccordionSummaryClick = (event) => {
+    event.stopPropagation();
   };
 
+  const handleAddCarrier = () => {
+    const newCarrier = {
+      freight: {
+        search: "",
+        name: "",
+        insurance: "",
+        phone: "",
+        fax: "",
+        pro: "",
+        rc: "",
+      },
+      dispatch: {
+        name: "",
+        phone: "",
+        email: "",
+        afterHoursName: "",
+        afterHoursPhone: "",
+        comment: "",
+      },
+      accounting: {
+        apFee: "$00.00",
+      },
+      drivers: [
+        {
+          name: "",
+          mobilePhone: "",
+          alternatePhone: "",
+          location: "",
+          palets: "",
+          tractor: "",
+          trailer: "",
+          equipment: "",
+          equipmentSize: "",
+        },
+        {
+          name: "",
+          mobilePhone: "",
+          alternatePhone: "",
+          location: "",
+          palets: " ",
+          tractor: "",
+          trailer: "",
+          equipment: "",
+          equipmentSize: "",
+        },
+      ],
+      notes: "",
+      docs: [""],
+    };
+    setCarriers([newCarrier, ...carriers]);
+    setExpanded(0);
+  };
+  const handleDeleteCarrier = (event, index) => {
+    event.stopPropagation();
+    const newCarriers = [...carriers];
+    newCarriers.splice(index, 1);
+    setCarriers(newCarriers);
+    setExpanded(null);
+  };
   return (
     <Box sx={{ width: "100%", padding: 1, background: "#F9F9F9" }}>
       <Stack spacing={2}>
@@ -108,18 +209,22 @@ const Load = () => {
         </Grid>
 
         <Box>
-          <GeneralBtn1 variant="contained" startIcon={<Plus />}>
+          <GeneralBtn1
+            variant="contained"
+            startIcon={<Plus />}
+            onClick={handleAddCarrier}
+          >
             Add Carrier
           </GeneralBtn1>
         </Box>
 
         <Box>
-          {data.map((carrier) => {
-            const panelName = Object.keys(carrier);
+          {carriers.map((carrier, index) => {
             return (
               <Box key={nanoid()} marginBottom={2}>
                 <Accordion
-                  expanded={expanded === panelName[0]}
+                  expanded={expanded === index}
+                  onChange={handleAccordionChange(index)}
                   sx={{
                     background: "#FFFFFF",
                     boxShadow:
@@ -136,33 +241,37 @@ const Load = () => {
                         bgcolor: grey[200],
                       },
                     }}
+                    onClick={handleAccordionSummaryClick}
                     expandIcon={
-                      <IconButton
-                        sx={{ pointerEvents: "auto" }}
-                        onClick={handleChange(panelName[0])}
-                      >
+                      <IconButton sx={{ pointerEvents: "auto" }}>
                         <ExpandIcon />
                       </IconButton>
                     }
                   >
-                    {expanded === panelName[0] ? (
+                    {expanded === index ? (
                       <Box sx={{ pointerEvents: "auto" }}>
                         <GeneralBtn1
+                          onClick={(event) => handleDeleteCarrier(event, index)}
                           variant="contained"
                           sx={{ marginRight: 1 }}
-                          disabled
                           startIcon={<Minus />}
                         >
                           remove carrier
                         </GeneralBtn1>
                         <GeneralBtn1
+                          onClick={handleAccordionSummaryClick}
                           variant="contained"
                           sx={{ marginRight: 1 }}
                         >
                           rate confirmation
                         </GeneralBtn1>
 
-                        <GeneralBtn1 variant="contained">AR</GeneralBtn1>
+                        <GeneralBtn1
+                          variant="contained"
+                          onClick={handleAccordionSummaryClick}
+                        >
+                          AP
+                        </GeneralBtn1>
                       </Box>
                     ) : (
                       <Box
@@ -180,7 +289,7 @@ const Load = () => {
                     )}
                   </AccordionSummary>
                   <AccordionDetails sx={{ bgcolor: grey[200] }}>
-                    <AccordionDetail />
+                    <AccordionDetail carrier={carrier} />
                   </AccordionDetails>
                 </Accordion>
               </Box>
