@@ -12,28 +12,19 @@ import {
   StyledLabel,
 } from "../../components/Styles/StyledBtns.js";
 import { setLogout } from "../../redux/slices/authSlice";
-import CustomInput from "../load/components/InputFields/CustomInput";
+import CustomInput from "../carrier/components/InputFields/CustomInput";
 // import useAuth from "../../hooks/useAuth";
 // import Cookies from "js-cookie";
 
 //styling imports:
 import {
   Box,
-  Button,
   Card,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Divider,
   IconButton,
-  Input,
-  InputLabel,
   MenuItem,
   Modal,
   Paper,
-  Select,
   Stack,
   Tooltip,
   Typography,
@@ -47,8 +38,6 @@ import avatar from "../../assets/NavbarImages/avatar.jpg";
 import { ReactComponent as Bell } from "../../assets/NavbarImages/bell_icon.svg";
 import { ReactComponent as PlusOrder } from "../../assets/NavbarImages/plus_order.svg";
 import { ReactComponent as Search } from "../../assets/NavbarImages/search.svg";
-import FormControlContext from "@mui/material/FormControl/FormControlContext.js";
-import CarrierSearchForm from "../../components/carriersearch/index.js";
 
 const FeedbackModal = ({ open, onclose }) => {
   return (
@@ -106,7 +95,6 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isSearching, setIsSearching] = useState(false);
   const open = Boolean(anchorEl);
 
   const [isModal, setModal] = useState(false);
@@ -138,38 +126,6 @@ const Navbar = () => {
       bgcolor="#FFFFFF"
       boxShadow="inset 0px -1px 0px #E2E2EA"
     >
-      <Dialog
-        open={isSearching}
-        onClose={() => {
-          setIsSearching(false);
-        }}
-        sx={{
-          ".MuiDialog-container": {
-            alignItems: "flex-start",
-          },
-        }}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <DialogTitle id="responsive-dialog-title">Carrier LookUp</DialogTitle>
-        <DialogContent>
-          <CarrierSearchForm />
-        </DialogContent>
-        <DialogActions
-          sx={{
-            justifyContent: "center",
-          }}
-        >
-          <CancelBtn
-            autoFocus
-            onClick={() => setIsSearching(false)}
-            sx={{
-              width: "50%",
-            }}
-          >
-            cancel
-          </CancelBtn>
-        </DialogActions>
-      </Dialog>
       <Box>
         <Box display="inline-block" minWidth="230px">
           <Typography fontSize="20px" variant="h6" color="#44444F">
@@ -180,7 +136,7 @@ const Navbar = () => {
         <Box display="inline-block">
           <Stack spacing={2} direction="row">
             <NavbarBtn startIcon={<PlusOrder />}>New Order</NavbarBtn>
-            <NavbarBtn onClick={() => setIsSearching(true)}>
+            <NavbarBtn>
               <Search />
             </NavbarBtn>
           </Stack>

@@ -5,11 +5,10 @@ import {
   InputBase,
   Radio,
   Switch,
-  TextField,
   styled,
   useRadioGroup,
 } from "@mui/material";
-import { blue, grey, indigo } from "@mui/material/colors";
+import { grey, indigo } from "@mui/material/colors";
 
 export const LoginBtn = styled(Button)(() => {
   return {
@@ -24,25 +23,6 @@ export const LoginBtn = styled(Button)(() => {
     "&:hover": {
       background: indigo[500],
       border: `1px solid ${indigo[700]}`,
-    },
-
-    "&.Mui-disabled": {
-      background: grey[500],
-      border: `1px solid ${grey[700]}`,
-    },
-  };
-});
-
-export const SubmitBtn = styled(Button)(() => {
-  return {
-    fontSize: "16px",
-    borderRadius: 8,
-    background: blue[800],
-    color: "white",
-    border: `1px solid #0062FF`,
-    "&:hover": {
-      background: blue[500],
-      border: `1px solid ${blue[700]}`,
     },
 
     "&.Mui-disabled": {
@@ -122,31 +102,21 @@ export const StyledLabel = styled(FormLabel)(() => ({
   fontSize: "16px",
 }));
 
-export const StyledInput = styled(InputBase)(() => ({
-  border: `1px solid ${grey[200]}`,
-  background: grey[100],
-  borderRadius: 5,
-  padding: "5px 8px",
-  color: "#282842",
-  fontSize: "16px",
-  "&.Mui-focused": {
-    border: `1px solid #0062FF`,
-  },
-  "&.Mui-error": { border: `1px solid #d32f2f` },
-}));
+export const StyledInput = styled(InputBase)((input) => {
+  return {
+    border: `1px solid ${grey[200]}`,
+    background: grey[100],
+    borderRadius: 5,
+    padding: "5px 8px",
+    color: "#282842",
+    fontSize: "16px",
+    "&.Mui-focused": {
+      border: `1px solid #0062FF`,
+    },
+    "&.Mui-error": { border: `1px solid #d32f2f` },
+  };
+});
 
-export const StyledTextInput = styled(TextField)(() => ({
-  border: `1px solid ${grey[200]}`,
-  background: grey[100],
-  borderRadius: 5,
-  padding: "5px 8px",
-  color: "#282842",
-  fontSize: "16px",
-  "&.Mui-focused": {
-    border: `1px solid #0062FF`,
-  },
-  "&.Mui-error": { border: `1px solid #d32f2f` },
-}));
 //--------------------------------------Styled Radio-------------------------------------------------//
 
 const BpIcon = styled("span")(() => ({
