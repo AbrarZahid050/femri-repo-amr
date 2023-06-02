@@ -22,6 +22,10 @@ import { ReactComponent as Plus } from "../../../../assets/New Load Page/Plus.sv
 
 import AccordionTable from "./AccordionTable";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { useState } from "react";
+import PickUpModal from "../pickUpModal/pickUpModal";
+import DropOfModal from "../dropOfModal/dropOfModal";
+import ApModal from "../APModal/APModal";
 
 const AccordionDetail = ({ carrier }) => {
   const { register, control } = useForm({
@@ -32,8 +36,15 @@ const AccordionDetail = ({ carrier }) => {
     control,
     name: "drivers",
   });
+
+  const [pickUpModal, setPickUpModal] = useState(false);
+  const [dropOfModal, setdropOfModal] = useState(false);
+
   return (
     <Box display="flex" gap={2} flexWrap="wrap" justifyContent="space-between">
+      <PickUpModal open={pickUpModal} onClose={() => setPickUpModal(false)} />
+      <DropOfModal open={dropOfModal} onClose={() => setdropOfModal(false)} />
+
       {/* card-1 */}
       <Box width="32%">
         <Paper
@@ -508,12 +519,58 @@ const AccordionDetail = ({ carrier }) => {
               alignItems="center"
             >
               <Typography fontSize="18px" variant="h6">
-                TRANSFERS
+                PICKUPS
               </Typography>
-              <Plus />
+              <GeneralBtn1
+                sx={{
+                  background: "transparent",
+                  "&:hover": {
+                    background: "transparent",
+                  },
+                }}
+                onClick={() => setPickUpModal(true)}
+              >
+                <Plus />
+              </GeneralBtn1>
             </Stack>
-
             <AccordionTable />
+          </Stack>
+        </Paper>
+      </Box>
+
+      <Box width="100%">
+        <Paper
+          sx={{
+            p: 2,
+            height: "100%",
+            background: "#FFFFFF",
+            boxShadow:
+              "0px 0px 1px rgba(12, 26, 75, 0.24), 0px 3px 8px -1px rgba(50, 50, 71, 0.05)",
+            borderRadius: "8px",
+            overflowX: "auto",
+          }}
+        >
+          <Stack spacing={2}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Typography fontSize="18px" variant="h6">
+                DROPOFFS
+              </Typography>
+              <GeneralBtn1
+                sx={{
+                  background: "transparent",
+                  "&:hover": {
+                    background: "transparent",
+                  },
+                }}
+                onClick={() => setdropOfModal(true)}
+              >
+                <Plus />
+              </GeneralBtn1>
+            </Stack>
             <AccordionTable />
           </Stack>
         </Paper>

@@ -10,9 +10,9 @@ function CarrierSearchForm() {
   const [result, setResult] = useState([]);
   const navigate = useNavigate();
   const carriers = [
-    { code: "MC", Number: 12345, name: "carrier 1" },
-    { code: "DOT", Number: 65432, name: "carrier 2" },
-    { code: "FF", Number: 9874, name: "carrier 3" },
+    { code: "MC", Number: "12345", name: "carrier 1" },
+    { code: "DOT", Number: "65432", name: "carrier 2" },
+    { code: "FF", Number: "9874", name: "carrier 3" },
   ];
   const handleSearch = () => {
     let carrier = carriers.find(
@@ -74,7 +74,9 @@ function CarrierSearchForm() {
             >
               <p>{item.name}</p>
               <SubmitBtn
-                onClick={() => navigate(`/panel/carrier/review/${number}`)}
+                onClick={() => {
+                  navigate(`/panel/carrier/review/${number}`);
+                }}
                 sx={{
                   background: indigo[500],
                   "&:hover": {

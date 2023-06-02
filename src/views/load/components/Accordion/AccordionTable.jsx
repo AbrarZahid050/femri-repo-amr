@@ -29,7 +29,6 @@ const AccordionTable = () => {
         <TableHead sx={{ background: "#F9FAFB" }}>
           <TableRow>
             {[
-              "TRANSFERS",
               "NAME",
               "ADDRESS",
               "CITY/STATE/ZIP",
@@ -49,7 +48,6 @@ const AccordionTable = () => {
         </TableHead>
         <TableBody>
           <TableRow sx={{ p: 0 }}>
-            <TableCell sx={{ color: "#D97706" }}>Pick Up</TableCell>
             {[
               "Pacome Anjorin",
               "2911 Nevada Boulevard",
@@ -82,7 +80,6 @@ const AccordionTable = () => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell sx={{ color: "#059669" }}>Drop Off</TableCell>
             {[
               "Pacome Anjorin",
               "2911 Nevada Boulevard",

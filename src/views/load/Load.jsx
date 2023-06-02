@@ -23,6 +23,8 @@ import FreightAccounting from "./components/FreightSection/FreightAccounting";
 import Freight from "./components/FreightSection/Freight";
 import AccordionDetail from "./components/Accordion/AccordionDetail";
 import Header from "./components/HeaderSection/Header";
+import ApModal from "./components/APModal/APModal";
+import ARModal from "./components/ARModal/ARModal";
 
 const data = [
   {
@@ -126,13 +128,14 @@ const data = [
 const Load = () => {
   const [carriers, setCarriers] = useState(data);
   const [expanded, setExpanded] = useState(false);
+  const [apModal, setApModal] = useState(false);
+
   const handleAccordionChange = (index) => (event, isExpanded) => {
     setExpanded(isExpanded ? index : null);
   };
   const handleAccordionSummaryClick = (event) => {
     event.stopPropagation();
   };
-
   const handleAddCarrier = () => {
     const newCarrier = {
       freight: {
@@ -174,6 +177,7 @@ const Load = () => {
     setCarriers([newCarrier, ...carriers]);
     setExpanded(0);
   };
+
   const handleDeleteCarrier = (event, index) => {
     event.stopPropagation();
     const newCarriers = [...carriers];
@@ -181,8 +185,15 @@ const Load = () => {
     setCarriers(newCarriers);
     setExpanded(null);
   };
+
+  const handleOpenAP = (event) => {
+    event.stopPropagation();
+    setApModal(true);
+  };
   return (
     <Box sx={{ width: "100%", padding: 1, background: "#F9F9F9" }}>
+      <ApModal open={apModal} onClose={() => setApModal(false)} />
+
       <Stack spacing={2}>
         <Header />
 
@@ -255,10 +266,7 @@ const Load = () => {
                           rate confirmation
                         </GeneralBtn1>
 
-                        <GeneralBtn1
-                          variant="contained"
-                          onClick={handleAccordionSummaryClick}
-                        >
+                        <GeneralBtn1 variant="contained" onClick={handleOpenAP}>
                           AP
                         </GeneralBtn1>
                       </Box>

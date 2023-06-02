@@ -6,8 +6,12 @@ import {
   GeneralBtn2,
 } from "../../../../components/Styles/StyledBtns";
 import { blue } from "@mui/material/colors";
+import { useState } from "react";
+import ARModal from "../ARModal/ARModal";
 
 const Header = () => {
+  const [arModal, setARModal] = useState(false);
+
   return (
     <Paper
       sx={{
@@ -19,6 +23,7 @@ const Header = () => {
       }}
       elevation={6}
     >
+      <ARModal open={arModal} onClose={() => setARModal(false)} />
       <Grid
         container
         rowSpacing={2}
@@ -56,7 +61,9 @@ const Header = () => {
 
         <Grid item>
           <Stack direction="row" spacing={2}>
-            <GeneralBtn1 variant="contained">AR</GeneralBtn1>
+            <GeneralBtn1 variant="contained" onClick={() => setARModal(true)}>
+              AR
+            </GeneralBtn1>
             <GeneralBtn2 variant="contained" sx={{ width: "200px" }}>
               Submit
             </GeneralBtn2>
